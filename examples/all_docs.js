@@ -11,3 +11,6 @@ var parser = JSONStream.parse(['rows', true]) //emit parts that match this path 
 
 req.pipe(parser)
 parser.pipe(logger)
+  } catch (err) {
+    console.error('Error:', err)
+  }
