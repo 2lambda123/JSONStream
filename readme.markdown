@@ -17,9 +17,13 @@ var request = require('request')
 
 request({url: 'http://isaacs.couchone.com/registry/_all_docs'})
   .pipe(JSONStream.parse('rows.*'))
-  .pipe(es.mapSync(function (data) {
+  .pipe(es.map(function (data) {
+    try {
     console.error(data)
-    return data
+          return data
+    } catch (err) {
+      console.error('Error:', err)
+    }
   }))
 ```
 
